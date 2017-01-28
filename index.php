@@ -1,6 +1,6 @@
 <?php
 // Start the session
-session_start();
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang = "en">
@@ -11,10 +11,10 @@ session_start();
         <title>THSST-1 SURVEY</title>
 
         <!-- Bootstrap -->
-        <link href="CSS/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="Assets/CSS/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!--Custom-->
-        <link href="CSS/index.css" rel="stylesheet">
+        <link href="Assets/CSS/index.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -283,22 +283,8 @@ session_start();
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="CSS/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+        <script src="Assets/CSS/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
         <!--Custom-->
-        <script src="JS/main.js"></script>
-        <!-- Hotjar Tracking Code for http://dlsu-lscs.org/ -->
-        <script>
-            (function (h, o, t, j, a, r) {
-                h.hj = h.hj || function () {
-                    (h.hj.q = h.hj.q || []).push(arguments)
-                };
-                h._hjSettings = {hjid: 328576, hjsv: 5};
-                a = o.getElementsByTagName('head')[0];
-                r = o.createElement('script');
-                r.async = 1;
-                r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-                a.appendChild(r);
-            })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
-        </script>
+        <script src="Assets/JS/main.js"></script>
     </body>
 </html>

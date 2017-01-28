@@ -19,7 +19,7 @@ session_start();
         <link href="assets/css/survey.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/css/bootstrap-slider.min.css" />
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/bootstrap-slider.min.js"></script>
+        
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -38,9 +38,9 @@ session_start();
                         <!--<span>-->
                         <h4 class="pull-left yay">
                             Hi, 
-                            <?php
+                            <!--php
                             echo $_POST["USERNAME"] . "!";
-                            ?>
+                            ?--> Marcus
                         </h4>
                         <!--</span>-->
                         <button type="button" class="btn btn-primary pull-right btn-userinfo-2" data-toggle="modal" data-target="#myModal">
@@ -60,12 +60,15 @@ session_start();
                             );
 
                             foreach ($fileinfos as $pathname => $fileinfo) {
+                                $ctr = 1;
                                 if (!$fileinfo->isFile())
                                     continue;
                                 if (strpos($pathname, ".html")) {
                                     $LINK = substr($pathname, 2);
-                                    echo "<option>" . $LINK . "</option>";
+                                    echo "<option value= ". $ctr .">" . $LINK . "</option>";
+                                    
                                 }
+                                $ctr = $ctr + 1;
                             }
 
                             // remove all session variables
@@ -82,12 +85,16 @@ session_start();
             </div>
         </div>
 
-        <?php
+        <div class='container-fluid row row-cust'>
+            <iframe src='' class='iframe-custom' id='myFrame'></iframe>
+         </div>"
+
+        <!--php
         echo "<div class='container-fluid row row-cust'>
                 
                     <iframe src='" . $LINK . "' class='iframe-custom' id='myFrame'></iframe>
                 </div>"
-        ?>
+        ?-->
 
         <!-- The Modal -->
         <div id="myModal" class="modal fade" role="dialog">
@@ -107,7 +114,7 @@ session_start();
                     <div class="modal-body">
                         <div class="row">
                             <!--<div class="col-lg-12">-->
-                            <form>
+                            <form id="kanseiForm">
 
                                 <div class="form-group text-center">
                                     <div class="row">
@@ -140,7 +147,7 @@ session_start();
                                                    data-slider-handle="round" class="mySlider"/>
                                         </div>
                                         <div class="col-lg-2">
-                                            <center><b>Enthusiastic</b></center>
+                                            <center><b>Impressive</b></center>
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +157,7 @@ session_start();
                                 <div class="form-group text-center">
                                     <div class="row">
                                         <div class="col-lg-2 col-lg-offset-2">
-                                            <center><b>Impressive</b></center>
+                                            <center><b>Light</b></center>
                                         </div>
                                         <div class="col-lg-4">
                                             <input id="ex3" data-slider-id='ex3' 
@@ -158,7 +165,7 @@ session_start();
                                                    data-slider-handle="round" class="mySlider"/>
                                         </div>
                                         <div class="col-lg-2">
-                                            <center><b>Conventional</b></center>
+                                            <center><b>Interesting</b></center>
                                         </div>
                                     </div>
                                 </div>
@@ -168,7 +175,7 @@ session_start();
                                 <div class="form-group text-center">
                                     <div class="row">
                                         <div class="col-lg-2 col-lg-offset-2">
-                                            <center><b>Mystic</b></center>
+                                            <center><b>Mysterious</b></center>
                                         </div>
                                         <div class="col-lg-4">
                                             <input id="ex4" data-slider-id='ex4' 
@@ -222,7 +229,7 @@ session_start();
                                 <div class="form-group text-center">
                                     <div class="row">
                                         <div class="col-lg-2 col-lg-offset-2">
-                                            <center><b>Old Fashioned</b></center>
+                                            <center><b>Klasiko</b></center>
                                         </div>
                                         <div class="col-lg-4">
                                             <input id="ex7" data-slider-id='ex7' 
@@ -230,43 +237,7 @@ session_start();
                                                    data-slider-handle="round" class="mySlider"/>
                                         </div>
                                         <div class="col-lg-2">
-                                            <center><b>Futuristic</b></center>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <hr class="hr-custom">
-
-                                <div class="form-group text-center">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-lg-offset-2">
-                                            <center><b>Crowded</b></center>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <input id="ex8" data-slider-id='ex8' 
-                                                   type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3"
-                                                   data-slider-handle="round" class="mySlider"/>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <center><b>Neat</b></center>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <hr class="hr-custom">
-
-                                <div class="form-group text-center">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-lg-offset-2">
-                                            <center><b>Simple</b></center>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <input id="ex9" data-slider-id='ex9' 
-                                                   type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3"
-                                                   data-slider-handle="round" class="mySlider"/>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <center><b>Luxurious</b></center>
+                                            <center><b>Malikhain</b></center>
                                         </div>
                                     </div>
                                 </div>
@@ -279,7 +250,7 @@ session_start();
                                             <center><b>Fun</b></center>
                                         </div>
                                         <div class="col-lg-4">
-                                            <input id="ex10" data-slider-id='ex10' 
+                                            <input id="ex8" data-slider-id='ex8' 
                                                    type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3"
                                                    data-slider-handle="round" class="mySlider"/>
                                         </div>
@@ -297,7 +268,7 @@ session_start();
                                             <center><b>Masculine</b></center>
                                         </div>
                                         <div class="col-lg-4">
-                                            <input id="ex11" data-slider-id='ex11' 
+                                            <input id="ex9" data-slider-id='ex9' 
                                                    type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3"
                                                    data-slider-handle="round" class="mySlider"/>
                                         </div>
@@ -315,7 +286,7 @@ session_start();
                                             <center><b>Pretty</b></center>
                                         </div>
                                         <div class="col-lg-4">
-                                            <input id="ex12" data-slider-id='ex12' 
+                                            <input id="ex10" data-slider-id='ex10' 
                                                    type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3"
                                                    data-slider-handle="round" class="mySlider"/>
                                         </div>
@@ -333,7 +304,7 @@ session_start();
                                             <center><b>Beautiful</b></center>
                                         </div>
                                         <div class="col-lg-4">
-                                            <input id="ex13" data-slider-id='ex13' 
+                                            <input id="ex11" data-slider-id='ex11' 
                                                    type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3"
                                                    data-slider-handle="round" class="mySlider"/>
                                         </div>
@@ -351,7 +322,7 @@ session_start();
                                             <center><b>Childish</b></center>
                                         </div>
                                         <div class="col-lg-4">
-                                            <input id="ex14" data-slider-id='ex14' 
+                                            <input id="ex12" data-slider-id='ex12' 
                                                    type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3"
                                                    data-slider-handle="round" class="mySlider"/>
                                         </div>
@@ -369,7 +340,7 @@ session_start();
                                             <center><b>Calm</b></center>
                                         </div>
                                         <div class="col-lg-4">
-                                            <input id="ex15" data-slider-id='ex15' 
+                                            <input id="ex13" data-slider-id='ex13' 
                                                    type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3"
                                                    data-slider-handle="round" class="mySlider"/>
                                         </div>
@@ -384,7 +355,43 @@ session_start();
                                 <div class="form-group text-center">
                                     <div class="row">
                                         <div class="col-lg-2 col-lg-offset-2">
-                                            <center><b>Gorgeous</b></center>
+                                            <center><b>Masikip</b></center>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input id="ex14" data-slider-id='ex14' 
+                                                   type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3"
+                                                   data-slider-handle="round" class="mySlider"/>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <center><b>Maayos</b></center>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-custom">
+
+                                <div class="form-group text-center">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-lg-offset-2">
+                                            <center><b>Simple</b></center>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input id="ex15" data-slider-id='ex15' 
+                                                   type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3"
+                                                   data-slider-handle="round" class="mySlider"/>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <center><b>Luxurious</b></center>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-custom">
+
+                                <div class="form-group text-center">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-lg-offset-2">
+                                            <center><b>Crowded</b></center>
                                         </div>
                                         <div class="col-lg-4">
                                             <input id="ex16" data-slider-id='ex16' 
@@ -392,7 +399,7 @@ session_start();
                                                    data-slider-handle="round" class="mySlider"/>
                                         </div>
                                         <div class="col-lg-2">
-                                            <center><b>Charming</b></center>
+                                            <center><b>Neat</b></center>
                                         </div>
                                     </div>
                                 </div>
@@ -433,19 +440,61 @@ session_start();
                                     </div>
                                 </div>
 
-                                <script>
-                                    // Without JQuery
-                                    var ctr = 0;
+                                <hr class="hr-custom">
 
-                                    for (ctr = 1; ctr < 19; ctr++) {
-                                        var slider = new Slider('#ex' + ctr, {
-                                            formatter: function (value) {
-                                                return 'Current value: ' + value;
-                                            }
-                                        });
-                                    }
+                                <div class="form-group text-center">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-lg-offset-2">
+                                            <center><b>Old-Fashioned</b></center>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input id="ex19" data-slider-id='ex19' 
+                                                   type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3"
+                                                   data-slider-handle="round" class="mySlider"/>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <center><b>Futuristic</b></center>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                </script>
+                                <hr class="hr-custom">
+
+                                <div class="form-group text-center">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-lg-offset-2">
+                                            <center><b>Gorgeous</b></center>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input id="ex20" data-slider-id='ex20' 
+                                                   type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3"
+                                                   data-slider-handle="round" class="mySlider"/>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <center><b>Charming</b></center>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-custom">
+
+                                <div class="form-group text-center">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-lg-offset-2">
+                                            <center><b>Masaya</b></center>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input id="ex21" data-slider-id='ex21' 
+                                                   type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3"
+                                                   data-slider-handle="round" class="mySlider"/>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <center><b>Nakakabagot</b></center>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
 
                             </form>
                             <!--</div>-->
@@ -471,11 +520,55 @@ session_start();
         <!--Custom-->
         <!--<script src="assets/js/main.js"></script>-->
 
-        <script>
-                                    $('#select-url').click(function () {
-                                        $('#myFrame').attr('src', $('#select-url').val());
-                                    });
-        </script>
+        
     </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/bootstrap-slider.min.js"></script>
+    <script>
+            var sliderSHIT = [];
+            var ctr = 0;
+
+            for (ctr = 1; ctr < 22; ctr++) {
+                sliderSHIT[ctr-1] = 3;
+            }
+
+            $('.mySlider').slider();
+
+            //console.log(sliderSHIT);
+            $('#select-url').click(function () {
+                //$('#myFrame').attr('src', $('#select-url').val());
+                console.log($('#select-url').val())
+                $('.mySlider').slider('refresh');
+
+            });
+
+             $('.mySlider').on('slide', function (ev) {
+                    console.log(ev.value);
+                    //console.log(ev.target.id);
+                    var str = ev.target.id;
+                    str = str.substring(2);
+                    console.log(str);
+                    var dex = str - 1;
+                    sliderSHIT[dex] = ev.value;
+            });
+
+            $('#userinfo_submit').on('click', function(e){
+                e.preventDefault();
+                console.log(sliderSHIT);
+
+                var sendFile = JSON.stringify(sliderSHIT)
+
+                 $.ajax({
+                     url: "models/modelHandler.php",
+                     type: "POST",
+                     data: {"type": "ksurvey", "dats": sendFile},
+                     dataType: "html",
+                     success: function(html){
+                         console.log(html);
+                         alert("Success");
+                     }
+                 });
+
+            });
+        </script>
 </html>
 

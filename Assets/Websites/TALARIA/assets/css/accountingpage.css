@@ -1,0 +1,26 @@
+.transact-btn{
+	background-color: transparent;
+	color: #fff;
+	border-width: 0px;
+	border-radius: 0px;
+	font-size: .75em;
+	text-transform: uppercase;
+}
+
+.transact-btn:hover{
+	color: #fff;
+	text-decoration: underline;
+}
+
+.transact-btn-div{
+	background-color: #1a1a1a;
+}
+
+.transact-btn-div:hover{
+	background-color: #242424;
+	-webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}

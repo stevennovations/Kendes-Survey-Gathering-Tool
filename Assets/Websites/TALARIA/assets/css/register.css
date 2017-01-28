@@ -1,0 +1,45 @@
+.text-fld, .pass-fld{
+	height: 44px;
+	font-size: 16px;
+	margin-bottom: 10px;
+	-webkit-appearance: none;
+	background: #fff;
+	border: 1px solid #d9d9d9;
+	border-top: 1px solid #c0c0c0;
+	/* border-radius: 2px; */
+	padding: 0 8px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.text-fld:hover, .pass-fld:hover, .cust-area:hover{
+	border: 1px solid #b9b9b9;
+	border-top: 1px solid #a0a0a0;
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.register-btn{
+	background-color: #1a1a1a;
+	color: #fff;
+	border-radius: 0px;
+	padding: 12.5px;
+	padding-left: 30px;
+	padding-right: 30px;
+	font-size: 1em;
+}
+
+.register-btn:hover{
+	color: #fff;
+	text-decoration: underline;
+}
+
+.wrong-fld{
+	border-color: red !important;
+	outline-color: red !important;
+}
+
+.cust-area:focus, input[type=text]:focus, input[type=password]:focus, input[type=number]:focus, input[type=email]:focus{
+	outline-color: #1a1a1a !important;
+}

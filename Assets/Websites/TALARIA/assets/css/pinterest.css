@@ -1,0 +1,74 @@
+#pinBoot {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+}
+img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.white-panel {
+  position: absolute;
+  background: white;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+}
+/*
+stylize any heading tags withing white-panel below
+*/
+
+.white-panel h1 {
+  font-size: 1em;
+}
+.white-panel h1 a {
+  color: #1a1a1a !important;
+}
+.product-info{
+  color: #1a1a1a;
+  font-style: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.white-panel:hover {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  margin-top: -5px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.white-panel p{
+  text-align: justify;
+}
+
+.view-pinterest-btn{
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 0px;
+  border-radius: 0px;
+  padding: 6.5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 1em;
+}
+
+.view-pinterest-btn:hover{
+  color: #fff;
+  text-decoration: underline;
+}
+
+.product-btn{
+  background-color: #1a1a1a;
+  color: #fff;
+  border-radius: 0px;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 0.8em;
+}
+
+.product-btn:hover{
+  color: #fff;
+  text-decoration: underline;
+}
