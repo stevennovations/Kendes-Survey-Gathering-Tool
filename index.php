@@ -32,7 +32,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <span class="active" id="login-form-link">Personal Information</span>
+                                    <span class="active" id="login-form-link">Personal information</span>
                                 </div>
                             </div>
                             <hr>
