@@ -1,6 +1,7 @@
 <?php
 
 require_once 'dbconnect.php'; //Database Connection
+session_start();
 
 /** Follows this format
         
@@ -15,13 +16,13 @@ require_once 'dbconnect.php'; //Database Connection
 	if (isset($_POST['type']) && !empty($_POST['type'])) {
      	$action = $_POST['type'];
      	switch ($action) {
-     		case 'ksurvey': echo addSurveyAnswer($_POST['dats']); break;
-     		case 'userProfile': addProfile($_POST['id']); break;
+     		case 'ksurvey': echo addSurveyAnswer($_POST['dats'], $_POST['usernme']); break;
+     		case 'userProfile': addProfile(); break;
 
      	}
-     }
+    }
 
-	function addSurveyAnswer($items) {
+	function addSurveyAnswer($items, $user_id) {
         //echo "hello";
 
         $conn = getConnection();
@@ -40,11 +41,20 @@ require_once 'dbconnect.php'; //Database Connection
 
         call_user_func_array(array($stmt, 'bind_param'), $a_params);
         $ret = $stmt->execute();
+        $last_id = $conn->insert_id;
+        $varr = 3001;
+        $stmtString2 = "INSERT INTO survey (kanseitb_idkanseitb, websitid, userid) VALUES (?,?,?)";
+        $stmt2 = $conn->prepare($stmtString2);
+        $stmt2->bind_param("iii", $last_id, $varr, $user_id);
+
+        $ret = $stmt2->execute();
+
+        echo  $last_id = $conn->insert_id;
 
         $conn->close();
 
-        echo $stmt->error;
-        var_dump($conn->error);
+        //echo $stmt->error;
+        //var_dump($conn->error);
 
         return $ret;
 
@@ -55,12 +65,46 @@ require_once 'dbconnect.php'; //Database Connection
     function addProfile(){
 
     	$conn = getConnection();
-    	$stmtString = "INSERT INTO user_profile (name, birthday, gndr, HStype, HScd, college, hobby, online_retail, num_known_ec, num_items_ecb, num_hours_spent_ec, prod_purch_most, price_of_prod, design_fucntion, presentation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    	$stmtString = "INSERT INTO user_profile (username, birthdate, college, gender, highschool1, highschool2, device, hobbies, primaryshop, shopnumber, shophours, shopitems, products, price, designorfunctionality, homepage) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+        // echo $_POST['USERNAME'] . "<br>";
+        // echo $_POST['BIRTHDATE'] . "<br>";
+        // echo $_POST['COLLEGE'] . "<br>";
+        // echo $_POST['GENDER'] . "<br>";
+        // echo $_POST['HIGHSCHOOL1'] . "<br>";
+        // echo $_POST['HIGHSCHOOL2'] . "<br>";
+        // echo $_POST['DEVICE'] . "<br>";
+        // echo $_POST['HOBBIES'] . "<br>";
+        // echo $_POST['PRIMARYSHOP'] . "<br>";
+        // echo $_POST['SHOPNUMBERS'] . "<br>";
+        // echo $_POST['SHOPHOURS'] . "<br>";
+        // echo $_POST['SHOPITEMS'] . "<br>";
+        // echo $_POST['PRODUCTS'] . "<br>";
+        // echo $_POST['PRICE'] . "<br>";
+        // echo $_POST['DESIGNORFUNCTIONALITY'] . "<br>";
+        // echo $_POST['HOMEPAGE'] . "<br>";
 
     	$stmt = $conn->prepare($stmtString);
-    	$stmt->bind_param("sssssssssssssss", $_POST['USERNAME'],$_POST['BIRTHDATE'],$_POST['COLLEGE'],$_POST['GENDER'],$_POST['HIGHSCHOOL1'],$_POST[''],$_POST[''],$_POST[''],$_POST[''],$_POST[''],$_POST[''],$_POST[''],$_POST[''],$_POST[''],$_POST[''])
+    	$stmt->bind_param("ssssssssssssssss", $_POST['USERNAME'], $_POST['BIRTHDATE'], $_POST['COLLEGE'], $_POST['GENDER'], $_POST['HIGHSCHOOL1'], $_POST['HIGHSCHOOL2'], $_POST['DEVICE'], $_POST['HOBBIES'], $_POST['PRIMARYSHOP'], $_POST['SHOPNUMBERS'], $_POST['SHOPHOURS'], $_POST['SHOPITEMS'], $_POST['PRODUCTS'], $_POST['PRICE'], $_POST['DESIGNORFUNCTIONALITY'], $_POST['HOMEPAGE']);
 
+        $ret = $stmt->execute();
+
+        $last_id = $conn->insert_id;
+        if($_SESSION["PREQ"] == 0){
+            $_SESSION['user_id'] = $last_id;
+            $_SESSION["NAME"] = $_POST["USERNAME"];
+            $_SESSION["BIRTHDAY"] = $_POST["BIRTHDATE"];
+            $_SESSION["GENDER"] = $_POST["GENDER"];
+        }
+
+        $conn->close();
+
+        //echo $stmt->error;
+        //var_dump($conn->error);
     	//Return User Profile ID
+
+        header("Location: ../survey.php"); /* Redirect browser */
+        exit();
     }
 
     
