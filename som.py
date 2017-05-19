@@ -6,6 +6,7 @@ import time
 from scipy.cluster.hierarchy import fcluster
 from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import KMeans
+import mpld3
 
 
 class SOM(object) :
@@ -169,13 +170,13 @@ class SOM(object) :
 
 #MAIN
 
-data = np.loadtxt(open("profiledesign.csv", "rb"), delimiter=",", skiprows=1)
+data = np.loadtxt(open("normalized.csv", "rb"), delimiter=",", skiprows=1)
 data_file = np.array(data).astype('float')
 
-n_iter = 10
+n_iter = 1
 xdim = 40
 ydim = 40
-map_dim = 31
+map_dim = 59
 a = 0.75
 #sig = 0.22
 
@@ -192,8 +193,34 @@ with tf.device("cpu:0") :
 
 	mapped = np.asarray(mapped)
 
-	#print len(mapped[n_iter-1])
+	print image_grid[0]
 
+	temp = np.reshape(image_grid[n_iter-1], (40,40,59))
+
+	print temp
+
+	np.savetxt('test.csv', image_grid[0][0], delimiter=',', fmt='%.18e')
+
+	itern = 0
+	with file('test_ko_2.txt', 'w') as outfile:
+	    # I'm writing a header here just for the sake of readability
+	    # Any line starting with "#" will be ignored by numpy.loadtxt
+	    outfile.write('# Array shape: {0}\n'.format(temp.shape))
+
+	    # Iterating through a ndimensional array produces slices along
+	    # the last axis. This is equivalent to data[i,:,:] in this case
+	    for data_slice in temp:
+
+	        # The formatting string indicates that I'm writing out
+	        # the values in left-justified columns 7 characters in width
+	        # with 2 decimal places.  
+	        np.savetxt(outfile, data_slice, fmt='%.18e')
+
+	        # Writing out a break to indicate different slices...
+	        outfile.write('# New slice\n')
+	        itern += 1
+
+	print itern 
 	#Plotting for color
 	h = 0
 	colors = []
@@ -210,34 +237,55 @@ with tf.device("cpu:0") :
 	   colors.append(image_grid_append) #Check distinct Colors
 	   h += 1
 
-	# Z = mapped[n_iter-1]
 
-	# plt.figure(figsize=(9,6))
-	# kmeans = KMeans(n_clusters=3).fit(Z)
+	#plt.imshow(colors[n_iter-1][metr], extent=[0,xdim,0,ydim], aspect='auto', alpha = 0.5)
+	#plt.show()
 
-	# plt.scatter(Z[:,0], Z[:,1], c=kmeans.labels_,cmap='prism')
-	# plt.imshow(colors[n_iter-1][16], extent=[0,xdim,0,ydim], aspect='auto', alpha = 0.5)
+	
+	# metr = 0
+	# while metr < map_dim:
+	# 	plt.imshow(colors[n_iter-1][metr], extent=[0,xdim,0,ydim], aspect='auto', alpha = 0.5)
+
+	# 	filename = ('test' + str(metr) + '.csv')
+	# 	np.savetxt(filename, colors[n_iter-1][metr], delimiter=',', fmt='%.18e')
+
+	# 	metr += 1	
+
+
+
+	Z = mapped[n_iter-1]
+
+	fig, ax = plt.subplots()
+	kmeans = KMeans(n_clusters=3).fit(Z)
+
+	scatter = ax.scatter(Z[:,0], Z[:,1], c=kmeans.labels_,cmap='prism')
+	ax.imshow(colors[n_iter-1][16], extent=[0,xdim,0,ydim], aspect='auto', alpha = 0.5)
 	# plt.show()
 	List = open("labels.txt").readlines()
-	# #Plotting Input Vectors
-	metr = 0
-	while metr < map_dim:
-		plt.figure(figsize=(9,6))
-		plt.title("%s, Iter %s"%(str(metr), str(n_iter)))
-		for i, m in enumerate(mapped[n_iter-1]):
-			plt.plot(m[0], m[1])
-			plt.text(m[0], m[1] -0.75, List[i], ha='center', va='center', bbox=dict(facecolor='white', alpha=0.7, lw=0))
-		plt.imshow(colors[n_iter-1][metr], extent=[0,xdim,0,ydim], aspect='auto', alpha = 0.5)
 
-		if metr in range(0,10):
-			_metr = str(0) + str(metr)
-		else:
-			_metr = metr
+	tooltip = mpld3.plugins.PointLabelTooltip(scatter, labels=List)
+	mpld3.plugins.connect(fig, tooltip)
 
-		filename = (str(_metr) + str(n_iter))
-		plt.savefig(filename)
+	mpld3.show()	
+	# # #Plotting Input Vectors
+	# metr = 0
+	# while metr < map_dim:
+	# 	plt.figure(figsize=(9,6))
+	# 	plt.title("%s, Iter %s"%(str(metr), str(n_iter)))
+	# 	for i, m in enumerate(mapped[n_iter-1]):
+	# 		plt.plot(m[0], m[1])
+	# 		plt.text(m[0], m[1] -0.75, List[i], ha='center', va='center', bbox=dict(facecolor='white', alpha=0.7, lw=0))
+	# 	plt.imshow(colors[n_iter-1][metr], extent=[0,xdim,0,ydim], aspect='auto', alpha = 0.5)
 
-		plt.clf()
+	# 	if metr in range(0,10):
+	# 		_metr = str(0) + str(metr)
+	# 	else:
+	# 		_metr = metr
 
-		metr += 1	
+	# 	filename = (str(_metr) + str(n_iter))
+	# 	plt.savefig(filename)
+
+	# 	plt.clf()
+
+	# 	metr += 1	
 #End of plotting_
