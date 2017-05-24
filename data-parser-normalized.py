@@ -4,256 +4,277 @@ import pandas as pd
 data = pd.read_csv('kansei-profile-design.csv', sep=',', header=0)
 
 data_convert = data['relax_refresh']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['relax_refresh'] = data_convert.astype(int)
+data['relax_refresh'] = data_convert
 
 data_convert = data['cool_impress']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['cool_impress'] = data_convert.astype(int)
+data['cool_impress'] = data_convert
 
 data_convert = data['light_interest']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['light_interest'] = data_convert.astype(int)
+data['light_interest'] = data_convert
 
 data_convert = data['mystery_elegant']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['mystery_elegant'] = data_convert.astype(int)
+data['mystery_elegant'] = data_convert
 
 data_convert = data['classic_creative']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['classic_creative'] = data_convert.astype(int)
+data['classic_creative'] = data_convert
 
 data_convert = data['sexy_chic']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['sexy_chic'] = data_convert.astype(int)
+data['sexy_chic'] = data_convert
 
 data_convert = data['klasiko_malikhain']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['klasiko_malikhain'] = data_convert.astype(int)
+data['klasiko_malikhain'] = data_convert
 
 data_convert = data['fun_boring']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['fun_boring'] = data_convert.astype(int)
+data['fun_boring'] = data_convert
 
 data_convert = data['M_F']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['M_F'] = data_convert.astype(int)
+data['M_F'] = data_convert
 
 data_convert = data['pretty_adorable']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['pretty_adorable'] = data_convert.astype(int)
+data['pretty_adorable'] = data_convert
 
 data_convert = data['beauty_cute']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['beauty_cute'] = data_convert.astype(int)
+data['beauty_cute'] = data_convert
 
 data_convert = data['child_profe']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['child_profe'] = data_convert.astype(int)
+data['child_profe'] = data_convert
 
 data_convert = data['calm_live']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['calm_live'] = data_convert.astype(int)
+data['calm_live'] = data_convert
 
 data_convert = data['masikip_maayos']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['masikip_maayos'] = data_convert.astype(int)
+data['masikip_maayos'] = data_convert
 
 data_convert = data['simple_luxury']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['simple_luxury'] = data_convert.astype(int)
+data['simple_luxury'] = data_convert
 
 data_convert = data['crowded_neat']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['crowded_neat'] = data_convert.astype(int)
+data['crowded_neat'] = data_convert
 
 data_convert = data['plain_sopshiticated']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['plain_sopshiticated'] = data_convert.astype(int)
+data['plain_sopshiticated'] = data_convert
 
 data_convert = data['comfort_style']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['comfort_style'] = data_convert.astype(int)
+data['comfort_style'] = data_convert
 
 data_convert = data['oldf_future']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['oldf_future'] = data_convert.astype(int)
+data['oldf_future'] = data_convert
 
 data_convert = data['gorgeous_charm']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['gorgeous_charm'] = data_convert.astype(int)
+data['gorgeous_charm'] = data_convert
 
 data_convert = data['masaya_nakakabagot']
+data_convert = data_convert.astype('float64')
 
 for index in range(len(data_convert)):
  	if (data_convert[index] == 1 or data_convert[index] == 2):
- 		data_convert[index] = -1
- 	elif (data_convert[index] == 3):
  		data_convert[index] = 0
+ 	elif (data_convert[index] == 3):
+ 		data_convert[index] = float(0.5)
  	elif (data_convert[index] == 4 or data_convert[index] == 5):
  		data_convert[index] = 1
 
-data['masaya_nakakabagot'] = data_convert.astype(int)
+data['masaya_nakakabagot'] = data_convert
 
 data_convert = data['birthdate']
 data_convert = data_convert.astype('float64') 
