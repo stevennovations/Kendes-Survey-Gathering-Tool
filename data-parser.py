@@ -19,7 +19,7 @@ data = pd.read_csv('master-file.csv', sep=',', header=0)
 data_convert = data['birthdate']
 
 for index in range(len(data_convert)):
-	value = dateT.datetime.strptime(data_convert[index], "%Y-%m-%d")
+	value = dateT.datetime.strptime(data_convert[index], '%d/%m/%Y')
 	data_convert[index] = calculate_age(value)
 
 data['birthdate'] = data_convert.astype(int)
