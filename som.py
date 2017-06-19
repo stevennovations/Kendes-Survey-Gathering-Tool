@@ -169,7 +169,7 @@ class SOM(object) :
 
 #MAIN
 
-data = np.loadtxt(open("kansei-normalized.csv", "rb"), delimiter=",", skiprows=1)
+data = np.loadtxt(open("kansei-design-normalized.csv", "rb"), delimiter=",", skiprows=1)
 data_file = np.array(data).astype('float')
 
 n_iter = 10
